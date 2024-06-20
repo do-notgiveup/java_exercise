@@ -27,28 +27,6 @@ public class Main {
         }
     }
 
-//    public static char getCharNonRepeat(String str) {
-////        char getChar = str.charAt(0);
-////        for (int i = 1; i <= str.length() - 1; i++) {
-////            if (i != str.length() - 1 && str.charAt(i) != getChar
-////                    && str.charAt(i + 1) != str.charAt(i)) {
-////                getChar = str.charAt(i);
-////            } else if (i == str.length() - 1 && str.charAt(i) != getChar) {
-////                getChar = str.charAt(i);
-////            } else break;
-////        }
-////        return getChar;
-//        char c = 0;
-//        for (int i = 0; i < str.length(); i++) {
-//            c = str.charAt(i);
-//            for (int j = 0; j < str.length(); j++) {
-//                if (i != j && str.charAt((j)) == c)
-//
-//            }
-//        }
-//        return c;
-//    }
-
     public static String firstNonRepeatCharacterByLoop(String input){
         // for 1: duyệt ký tự đầu tiên đến ký tự cuối của String.
         for(int i = 0; i < input.length(); i++){
