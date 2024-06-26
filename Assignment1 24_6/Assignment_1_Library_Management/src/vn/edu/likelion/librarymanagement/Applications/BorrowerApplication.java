@@ -12,6 +12,13 @@ public class BorrowerApplication implements IBorrowerInterface {
 
     @Override
     public void viewAllBorrower() {
+//        Collections.sort(listBorrower, new Comparator<Borrower>() {
+//            @Override
+//            public int compare(Borrower o1, Borrower o2) {
+//                return o1.getBorrowerName().compareTo(o2.getBorrowerName()) &
+//                        (o1.getBorrowedDate().compareTo(o2.getBorrowedDate()));
+//            }
+//        });
 
         listBorrower.sort(Comparator.comparing(Borrower::getBorrowerName).thenComparing(Borrower::getBorrowedDate));
         for (Borrower borrower : listBorrower) {

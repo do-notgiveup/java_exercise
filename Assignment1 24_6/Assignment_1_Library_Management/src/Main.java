@@ -159,7 +159,7 @@ public class Main {
                                             Book book = BookApplication.getBookById(Integer.parseInt(sc.nextLine()));
                                             if (book != null) {
                                                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                                                System.out.print("Enter return date: ");
+                                                System.out.print("Enter return date (yyyy-MM-dd HH:mm): ");
                                                 LocalDateTime returnDate = LocalDateTime.parse(sc.nextLine(), formatter);
                                                 if (returnDate.isAfter(LocalDateTime.now())) {
 //                                            System.out.println("Enter book's name: ");
