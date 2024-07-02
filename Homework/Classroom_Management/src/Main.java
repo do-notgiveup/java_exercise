@@ -4,30 +4,29 @@ import vn.edu.likelion.classroommanagement.Services.ClassroomService;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Formatter;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
+//        Classroom: số bàn, danh sách học viên, sl dự kiến
+//
+//        Student: tên, ngày tháng năm sinh, cccd, mã học viên,
+//        trạng thái, lí do, ngày giờ nhập học
+//
+//        teacher: danh sách lớp dạy
+//
+//        1 bạn 1 lớp, bỏ học sửa trạng thái thêm lí do
+//
+//            đăng kí học viên, xem danh sách học viên trong lớp
+//        và thông tin của họ
+//        sửa thông tin học viên, học viên bỏ học
 
         ArrayList<Student> studentArrayList = new ArrayList<>();
         for (int i = 1; i <= 11; i++) {
             studentArrayList.add(new Student(i, "Student" + i, LocalDate.parse("2001-03-12"), "0123456789",
                     "", false, "", null));
         }
-//        studentArrayList.add(new Student(1, "An", LocalDate.parse("2001-03-12"), "0123456789",
-//                "", false, "", null));
-//        studentArrayList.add(new Student(2, "Binh", LocalDate.parse("2001-03-12"), "0123456789",
-//                "", false, "", null));
-//        studentArrayList.add(new Student(3, "Cuong", LocalDate.parse("2001-03-12"), "0123456789",
-//                "", false, "", null));
-//        studentArrayList.add(new Student(4, "Duong", LocalDate.parse("2001-03-12"), "0123456789",
-//                "", false, "", null));
-//        studentArrayList.add(new Student(5, "Giang", LocalDate.parse("2001-03-12"), "0123456789",
-//                "", false, "", null));
-//        studentArrayList.add(new Student(6, "Lan", LocalDate.parse("2001-03-12"), "0123456789",
-//                "", false, "", null));
 
         Classroom c = new Classroom(1, "java can ban", 10, 10, false);
 
