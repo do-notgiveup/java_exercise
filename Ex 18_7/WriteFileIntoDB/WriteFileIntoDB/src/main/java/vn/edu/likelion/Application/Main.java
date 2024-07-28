@@ -21,7 +21,7 @@ public class Main {
 
         // doc file StudentsList.txt va ghi vao DB
         WriteFileIntoDbApplication.writeFileIntoDb(url, user, pass);
-
+        
         // thuc hien cac chuc nang
         do {
             try (Connection connection = DriverManager.getConnection(url, user, pass)) {

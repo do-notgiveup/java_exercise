@@ -62,7 +62,6 @@ public class Services {
                 }
                 System.out.println("----------------------------------------------");
 
-
                 System.out.print("nhap lua chon cua ban: ");
                 int choose = Integer.parseInt(sc.nextLine());
                 query = "select * from rolepermission where rolepermission.roleid = " + userId +

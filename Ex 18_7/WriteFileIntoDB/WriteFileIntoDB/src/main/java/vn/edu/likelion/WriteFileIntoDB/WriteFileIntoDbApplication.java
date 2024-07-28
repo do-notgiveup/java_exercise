@@ -11,7 +11,7 @@ public class WriteFileIntoDbApplication {
         BufferedReader br = null;
         PreparedStatement stat = null;
         ResultSet resultSet = null;
-        try (Connection conn = DriverManager.getConnection(url, user, pass)){
+        try (Connection conn = DriverManager.getConnection(url, user, pass)) {
             br = new BufferedReader(new FileReader("StudentsList.txt"));
             String line;
             String query;
