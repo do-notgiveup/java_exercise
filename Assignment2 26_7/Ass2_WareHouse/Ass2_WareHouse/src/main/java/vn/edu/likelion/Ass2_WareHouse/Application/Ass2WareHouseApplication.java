@@ -1,9 +1,12 @@
 package vn.edu.likelion.Ass2_WareHouse.Application;
 
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -121,6 +124,10 @@ public class Ass2WareHouseApplication {
                     // logout
                     logout();
                     break;
+                case 13:
+                    // export report
+                    exportReport(connectDB);
+                    break;
                 case 0:
                     // exit program
                     check = false;
@@ -167,20 +174,15 @@ public class Ass2WareHouseApplication {
 
     public static void showMenu(int role) {
         System.out.println("=================MENU================");
-        System.out.println("1: View info warehouse");
-        System.out.println("2: Insert product into warehouse");
+        System.out.println("1: View info warehouse    -    2: Insert product into warehouse");
         if (role == 1) {
-            System.out.println("3: View all user");
-            System.out.println("4: Create user");
-            System.out.println("5: Update user");
-            System.out.println("6: Delete user");
-            System.out.println("7: View all warehouse");
-            System.out.println("8: Create warehouse");
-            System.out.println("9: Update warehouse");
-            System.out.println("10: Delete warehouse");
+            System.out.println("3: View all user          -    4: Create user");
+            System.out.println("5: Update user            -    6: Delete user");
+            System.out.println("7: View all warehouse     -    8: Create warehouse");
+            System.out.println("9: Update warehouse       -    10: Delete warehouse");
             System.out.println("11: Assign user into warehouse");
         }
-        System.out.println("12: Logout");
+        System.out.println("12: Logout                -    13: Export report");
         System.out.println("0: Exit application");
         System.out.println("=====================================");
         System.out.print("Enter your choose: ");
@@ -205,9 +207,14 @@ public class Ass2WareHouseApplication {
             stat = conn.openConnection().prepareStatement(query);
             rs = stat.executeQuery();
             if (rs.next()) {
+                System.out.println("-----------------------------");
                 System.out.print("User: " + rs.getInt(2) +
                         " \t | Warehouse name: " + rs.getString(3) +
                         " \t | Location: " + rs.getString(4));
+                System.out.println("\n-----------------------------");
+
+            } else {
+                System.out.println("Warehouse not found");
             }
             System.out.println();
 
@@ -215,10 +222,11 @@ public class Ass2WareHouseApplication {
 
             rs = conn.getConnection().prepareStatement(query).executeQuery();
             while (rs.next()) {
+                System.out.println("-----------------------------");
                 System.out.print(rs.getInt(1) + "\t| " + rs.getString(3) +
                         "\t| " + rs.getString(4) + "\t| " + rs.getInt(5) +
                         "\t| " + rs.getDouble(6));
-                System.out.println();
+                System.out.println("\n-----------------------------");
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -664,5 +672,105 @@ public class Ass2WareHouseApplication {
     public static void logout() {
         role = 0;
         userId = 0;
+    }
+
+    public static void exportReport(ConnectDB conn) {
+        try (XSSFWorkbook workbook = new XSSFWorkbook()) {
+            // Tạo một workbook mới
+            conn.openConnection();
+            if (role == 1) {
+                ResultSet rs = conn.getConnection().prepareStatement("SELECT * FROM warehouse order by id asc")
+                        .executeQuery();
+                while (rs.next()) {
+                    Sheet sheet = workbook.createSheet("Report warehouse " + rs.getString("name")); // Tạo một sheet mới
+                    Row row = sheet.createRow(0); // Tạo một hàng mới
+                    Cell cell1 = row.createCell(1); // Tạo các ô và đặt giá trị
+                    cell1.setCellValue("Id");
+                    Cell cell2 = row.createCell(2);
+                    cell2.setCellValue("Warehouse_id");
+                    Cell cell3 = row.createCell(3);
+                    cell3.setCellValue("Name");
+                    Cell cell4 = row.createCell(4);
+                    cell4.setCellValue("Description");
+                    Cell cell5 = row.createCell(5);
+                    cell5.setCellValue("Amount");
+                    Cell cell6 = row.createCell(6);
+                    cell6.setCellValue("Price");
+                    int rowNum = 1;
+
+                    ResultSet rs1 = conn.getConnection()
+                            .prepareStatement("select * from product where warehouse_id = "
+                                    + rs.getInt("id")).executeQuery();
+                    while (rs1.next()) {
+                        Row row1 = sheet.createRow(rowNum++); // Tạo một hàng mới
+                        Cell cell11 = row1.createCell(1); // Tạo các ô và đặt giá trị
+                        cell11.setCellValue(rs1.getInt(1));
+                        Cell cell21 = row1.createCell(2);
+                        cell21.setCellValue(rs1.getInt(2));
+                        Cell cell31 = row1.createCell(3);
+                        cell31.setCellValue(rs1.getString(3));
+                        Cell cell41 = row1.createCell(4);
+                        cell41.setCellValue(rs1.getString(4));
+                        Cell cell51 = row1.createCell(5);
+                        cell51.setCellValue(rs1.getInt(5));
+                        Cell cell61 = row1.createCell(6);
+                        cell61.setCellValue(rs1.getDouble(6));
+                    }
+                }
+                FileOutputStream out = new FileOutputStream("Report " + userId + ".xlsx"); // Ghi ra file
+                workbook.write(out);
+                workbook.close();
+                System.out.println("Đã tạo file Xlsx thành công!");
+            } else if (role == 2) {
+                ResultSet rs = conn.getConnection().prepareStatement("SELECT * FROM warehouse w , product p WHERE w.USER_ID = " + userId)
+                        .executeQuery();
+                Sheet sheet = workbook.createSheet("Report warehouse"); // Tạo một sheet mới
+                int rowNum = 1;
+                Row row = sheet.createRow(0); // Tạo một hàng mới
+                Cell cell1 = row.createCell(1); // Tạo các ô và đặt giá trị
+                cell1.setCellValue("Id");
+                Cell cell2 = row.createCell(2);
+                cell2.setCellValue("Warehouse_id");
+                Cell cell3 = row.createCell(3);
+                cell3.setCellValue("Name");
+                Cell cell4 = row.createCell(4);
+                cell4.setCellValue("Description");
+                Cell cell5 = row.createCell(5);
+                cell5.setCellValue("Amount");
+                Cell cell6 = row.createCell(6);
+                cell6.setCellValue("Price");
+                while (rs.next()) {
+                    // neu co kho thi thuc hien xuat bao cao
+                    // dau tien la xem san pham trong kho
+                    Row row1 = sheet.createRow(rowNum++); // Tạo một hàng mới
+                    Cell cell11 = row1.createCell(1); // Tạo các ô và đặt giá trị
+                    cell11.setCellValue(rs.getInt(5));
+                    Cell cell21 = row1.createCell(2);
+                    cell21.setCellValue(rs.getInt(6));
+                    Cell cell31 = row1.createCell(3);
+                    cell31.setCellValue(rs.getString(7));
+                    Cell cell41 = row1.createCell(4);
+                    cell41.setCellValue(rs.getString(8));
+                    Cell cell51 = row1.createCell(5);
+                    cell51.setCellValue(rs.getInt(9));
+                    Cell cell61 = row1.createCell(6);
+                    cell61.setCellValue(rs.getInt(10));
+                }
+                FileOutputStream out = new FileOutputStream("Report " + userId + ".xlsx"); // Ghi ra file
+                workbook.write(out);
+                workbook.close();
+                System.out.println("Đã tạo file Xlsx thành công!");
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        } finally {
+            try {
+                conn.closeConnection();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+                e.printStackTrace();
+            }
+        }
     }
 }
