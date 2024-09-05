@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="648f03c4-0c3b-47bc-b785-d68c3fb00fc6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../../Ex 30_8/basic_authentication/basic_authentication/src/main/java/vn/edu/likelion/basic_authentication/configurations/SercurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Ex 30_8/basic_authentication/basic_authentication/src/main/java/vn/edu/likelion/basic_authentication/configurations/SercurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Ex 30_8/basic_authentication/basic_authentication/src/main/java/vn/edu/likelion/basic_authentication/controllers/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Ex 30_8/basic_authentication/basic_authentication/src/main/java/vn/edu/likelion/basic_authentication/controllers/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Ex 30_8/basic_authentication/basic_authentication/src/main/java/vn/edu/likelion/basic_authentication/services/impl/CustomUserDetailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Ex 30_8/basic_authentication/basic_authentication/src/main/java/vn/edu/likelion/basic_authentication/services/impl/CustomUserDetailService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2lMQ949I9DZAhiurNXdXfNXQgYE" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.welcomePage.html.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BasicAuthenticationApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/PhamDucNghia/LIKELION_Trainning_JavaSpring/java_exercise/Ex 4_9/JWT_authentication/JWT_authentication",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PhamDucNghia\LIKELION_Trainning_JavaSpring\java_exercise\Ex 30_8\basic_authentication\basic_authentication\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="vn.edu.likelion.basic_authentication.controllers" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.BasicAuthenticationApplication">
+    <configuration name="welcomePage.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/basic_authentication/Ex 30_8/basic_authentication/basic_authentication/src/main/resources/templates/welcomePage.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="BasicAuthenticationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="JWT_authentication" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="vn.edu.likelion.basic_authentication.BasicAuthenticationApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.welcomePage.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="648f03c4-0c3b-47bc-b785-d68c3fb00fc6" name="Changes" comment="" />
+      <created>1724987310591</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1724987310591</updated>
+      <workItem from="1724987311680" duration="19901000" />
+      <workItem from="1725032798078" duration="1202000" />
+      <workItem from="1725264383584" duration="10752000" />
+      <workItem from="1725416778977" duration="597000" />
+      <workItem from="1725432921223" duration="311000" />
+      <workItem from="1725433420746" duration="129000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
