@@ -8,7 +8,10 @@ import org.springframework.http.ResponseEntity;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.TemplateEngine;
@@ -17,11 +20,10 @@ import vn.edu.likelion.ChangePassword.entity.AuthEntity;
 import vn.edu.likelion.ChangePassword.model.requestDto.LoginUserDto;
 import vn.edu.likelion.ChangePassword.model.requestDto.PasswordDto;
 import vn.edu.likelion.ChangePassword.model.requestDto.RegisterUserDto;
+import vn.edu.likelion.ChangePassword.model.responseDto.GenericResponse;
 import vn.edu.likelion.ChangePassword.model.responseDto.LoginResponse;
 import vn.edu.likelion.ChangePassword.service.AuthService;
 import vn.edu.likelion.ChangePassword.service.tmp.JwtService;
-
-import java.util.Locale;
 
 @RestController
 @RequestMapping("/auth")
@@ -31,8 +33,8 @@ public class AuthController {
     @Autowired
     private AuthService userService;
 
-//    @Autowired
-//    private MessageSource messages;
+    @Autowired
+    private MessageSource messages;
 
     @Autowired
     private JwtService jwtService;
@@ -45,17 +47,27 @@ public class AuthController {
 
     // Change user password
     @PostMapping("/user/updatePassword")
-    public String changeUserPassword(@RequestBody PasswordDto passwordDto) {
-        System.out.println("Demo1: ");
-        AuthEntity user = userService.findUserByUsername(((AuthEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+    public GenericResponse changeUserPassword(@RequestBody PasswordDto passwordDto) {
+
+//        UserDetails user = userService.findUserByUsername(((AuthEntity) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
+
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+        User object = (User) authentication.getPrincipal();
+        String username = object.getUsername();
+        AuthEntity user = userService.findUserByUsername(username);
+
 //        AuthEntity user = userService.findUserByUsername("admin");
 
 //        if (!userService.checkIfValidOldPassword(user, passwordDto.getOldPassword())) {
 //            throw new InvalidOldPasswordException();
 //        }
+//        AuthEntity userAuth = AuthEntity.builder().username(user.getUsername())
+//                .email(user.)
+//                .build();
         userService.changeUserPassword(user, passwordDto.getNewPassword());
-//        return new GenericResponse(messages.getMessage("message.updatePasswordSuc", null, locale));
-        return "change success";
+        return new GenericResponse(messages.getMessage("message.updatePasswordSuc", null, locel));
+//        return "change success";
     }
 
     @PostMapping("/register")
